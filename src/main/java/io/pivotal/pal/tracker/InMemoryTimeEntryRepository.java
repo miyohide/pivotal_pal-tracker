@@ -8,7 +8,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.concurrent.atomic.AtomicLong;
 
-@Repository
 public class InMemoryTimeEntryRepository implements TimeEntryRepository {
   private AtomicLong id = new AtomicLong(0L);
   private Map<Long, TimeEntry> timeEntryMap = new HashMap<>();
