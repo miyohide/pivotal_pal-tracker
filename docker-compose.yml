@@ -1,0 +1,31 @@
+version: '3'
+services:
+  dev-db:
+    image: mysql:8.0.19
+    environment:
+      MYSQL_DATABASE: tracker_dev
+      MYSQL_USER: username
+      MYSQL_PASSWORD: secret
+      MYSQL_ROOT_PASSWORD: password
+    ports:
+      - "3306:3306"
+    volumes:
+      - db-dev-data:/var/lib/mysql
+
+  test-db:
+    image: mysql:8.0.19
+    environment:
+      MYSQL_DATABASE: tracker_test
+      MYSQL_USER: username
+      MYSQL_PASSWORD: secret
+      MYSQL_ROOT_PASSWORD: password
+    ports:
+      - "3316:3306"
+    volumes:
+      - db-test-data:/var/lib/mysql
+
+volumes:
+  db-dev-data:
+    driver: local
+  db-test-data:
+    driver: local
