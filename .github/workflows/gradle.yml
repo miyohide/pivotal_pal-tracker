@@ -7,6 +7,12 @@ jobs:
 
     runs-on: ubuntu-latest
 
+    services:
+      mysql:
+        image: mysql:8.0.19
+        ports:
+          - 3316:3306
+
     steps:
       - uses: actions/checkout@v2
       - name: Set up JDK 11
@@ -17,3 +23,9 @@ jobs:
         run: chmod +x gradlew
       - name: Build with Gradle
         run: ./gradlew build
+        env:
+          MYSQL_DATABASE: tracker_test
+          MYSQL_USER: username
+          MYSQL_PASSWORD: secret
+          MYSQL_ROOT_PASSWORD: password
+
