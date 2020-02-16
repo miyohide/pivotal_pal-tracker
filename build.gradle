@@ -24,13 +24,13 @@ test {
     useJUnitPlatform()
 }
 
-def developmentDbUrl = "jdbc:mysql://127.0.0.1:3306/tracker_dev?user=username&password=secret&useSSL=false&useTimezone=true&serverTimezone=UTC&useLegacyDatetimeCode=false"
+def developmentDbUrl = "jdbc:mysql://127.0.0.1:3306/tracker_dev?user=username&password=secret&allowPublicKeyRetrieval=true&useSSL=false&useTimezone=true&serverTimezone=UTC&useLegacyDatetimeCode=false"
 bootRun.environment([
         "WELCOME_MESSAGE": "hello",
         "SPRING_DATASOURCE_URL": developmentDbUrl,
 ])
 
-def testDbUrl = "jdbc:mysql://127.0.0.1:3316/tracker_test?user=username&password=secret&useSSL=false&useTimezone=true&serverTimezone=UTC&useLegacyDatetimeCode=false"
+def testDbUrl = "jdbc:mysql://127.0.0.1:3316/tracker_test?user=username&password=secret&allowPublicKeyRetrieval=true&useSSL=false&useTimezone=true&serverTimezone=UTC&useLegacyDatetimeCode=false"
 test.environment([
         "WELCOME_MESSAGE": "Hello from test",
         "SPRING_DATASOURCE_URL": testDbUrl,
