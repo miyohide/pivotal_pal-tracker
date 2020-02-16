@@ -12,7 +12,7 @@ jobs:
         image: mysql:8.0.19
         ports:
           - 3316:3306
-        options: --health-cmd="mysqladmin ping --port 3316" --health-interval=10s --health-timeout=5s --health-retries=3
+        options: --health-cmd="mysqladmin ping --port 3316" --health-interval=20s --health-timeout=10s --health-retries=10
 
     steps:
       - uses: actions/checkout@v2
