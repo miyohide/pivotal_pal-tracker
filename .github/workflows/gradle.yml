@@ -30,6 +30,8 @@ jobs:
         run: |
           sudo apt-get install -y mysql-client
           mysql --host 127.0.0.1 --port 3316 -uroot -ppassword -e "SHOW DATABASES"
+      - name: Flyway migrate
+        run: ./gradlew testMigrate
       - name: Build with Gradle
         run: ./gradlew build
       - name: Archive Test Result
