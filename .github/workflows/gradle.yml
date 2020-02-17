@@ -32,3 +32,9 @@ jobs:
           mysql --host 127.0.0.1 --port 3316 -uroot -ppassword -e "SHOW DATABASES"
       - name: Build with Gradle
         run: ./gradlew build
+      - name: Archive Test Result
+        if: always()
+        uses: actions/upload-artifact@v1
+        with:
+          name: test-results
+          path: build/reports
