@@ -16,7 +16,7 @@ jobs:
           MYSQL_PASSWORD: secret
           MYSQL_ROOT_PASSWORD: password
         ports:
-          - 3306:3306
+          - 3316
         options: --health-cmd="mysqladmin ping" --health-interval=10s --health-timeout=5s --health-retries=3
     steps:
 #      - uses: actions/checkout@v2
@@ -31,4 +31,4 @@ jobs:
       - name: Check mysql access
         run: |
           sudo apt-get install -y mysql-client
-          mysql --host 127.0.0.1 --port 3306 -uroot -ppassword -e "SHOW DATABASES"
+          mysql --host 127.0.0.1 --port ${{ job.services.mysql.ports['3316'] }} -uroot -ppassword -e "SHOW DATABASES"
